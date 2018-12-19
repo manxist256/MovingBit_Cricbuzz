@@ -1,0 +1,93 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 19, 2018, 8:38:44 PM
+    Author     : mankank
+*/
+.body {
+    background-image: linear-gradient(to top, green, white);
+}
+
+#mq_live_msg {
+    color: cyan;
+}
+#pageheader:first-letter {
+    color: red;
+}
+#timer {
+    float: right;
+    position: relative;
+    top: -80px;
+    right: -10px;
+    border-radius: 0px 0px 0px 20px;
+}
+#page_footer {
+    text-align: center;
+    clear: both;
+}
+#timer {
+    height: 30px;
+    width: 40px;
+    background-color:buttonface;
+}
+#left_section {
+    float: left;
+    font-weight: bold;
+}
+#right_section {
+    float: right;
+    font-weight: bold;
+}
+
+#news {
+    width: 500px;
+}
+
+#navbar1, #navbar2, #navbar3 {
+    height: 40px;
+    width: 100px;
+    background-color: green;
+    display: inline-block;
+    margin: 0px 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+#navbar1:hover, #navbar2:hover, #navbar3:hover {
+    background-color:yellowgreen;
+    border-radius: 10px 10px 0px 0px;
+}
+
+#ul_1 {
+    list-style-type: none;
+    position: absolute;
+    left: -40px;
+    top: 25px;
+    display: none;
+}
+
+#navbar3:hover #ul_1 {
+    display: block;   
+}
+
+li {
+    height: 40px;
+    width: 100px;
+    background-color: yellowgreen;
+}
+
+li:hover {
+    background-color: green;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.ipl {
+    color: white;
+    text-decoration: none;
+    margin: 0px 10px;
+}

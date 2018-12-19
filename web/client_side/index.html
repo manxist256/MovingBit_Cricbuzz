@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>
+            Cricket Score, Schedule, Latest Updates...
+        </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="../css/homepage.css">
+        <script>
+            var image1 = "../source_images/cricbuzz-1.jpg";
+            var image2 = "../source_images/Virat-Kohli-31st-ODI-century.jpg";
+            var image3 = "../source_images/india-vs-australia-live-streaming-semi-final.jpg";
+            var flag = 0;
+            function loopImages() {
+                var image = document.getElementById("img");
+                if (flag === 0) {
+                    image.src = image2;
+                    flag = 1;
+                } else if (flag === 1) {
+                    image.src = image3;
+                    flag = 2;
+                } else if (flag === 2) {
+                    image.src = image1;
+                    flag = 0;
+                }
+            }
+            var xmlhttp = new XMLHttpRequest();
+            function getScores() {
+                if (xmlhttp.readyState === 0 || xmlhttp.readyState === 4) {
+                    xmlhttp.open("GET", "../GetScores", true);
+                    xmlhttp.send(null);
+                    xmlhttp.onreadystatechange = updatescore;
+                    
+                } else {
+                    setTimeout(getScores, 1000);
+                }
+            }
+            function updatescore() {
+                if (xmlhttp.readyState === 4) {
+                    document.getElementById("livescores").innerHTML = xmlhttp.responseText;
+                } else {
+                    //alert("something went wrong!");
+                }
+            }
+            var xmldesc = new XMLHttpRequest();
+            function getDesc() {
+                if (xmldesc.readyState === 0 || xmldesc.readyState === 4) {
+                    xmldesc.open("GET", "../GetNews", true);
+                    xmldesc.send(null);
+                    xmldesc.onreadystatechange = getdescription;
+                    
+                } else {
+                    setTimeout(getDesc, 1000);
+                }
+            }
+            function getdescription() {
+                if (xmldesc.readyState === 4) {
+                    document.getElementById("news").innerHTML = xmldesc.responseText;
+                } else {
+                    //alert("something went wrong!");
+                }
+            }
+            function changeDate() {
+                document.getElementById("date").innerHTML = Date();
+            }
+            var t = 0;
+            function changeTimer() {
+                t += 1;
+                document.getElementById("timer").innerHTML = t;
+            }
+            var loopimages = setInterval(loopImages, 2000);
+            var changedate = setInterval(changeDate, 1000);
+            var timer = setInterval(changeTimer, 1000);
+            var getscores = setInterval(getScores, 5000);
+            var getdesc = setInterval(getDesc, 5000);
+            $(document).ready(function() {
+                $("#img").click(function() {
+                   clearInterval(loopimages); 
+                });
+            });
+        </script>
+    </head>
+    <body class="body">
+        <div align="center">
+            <h1 id="pageheader">Cricbuzz</h1>
+            <hr />
+            <div id="timer">
+                
+            </div>
+            <nav>
+                <div id="navbar1">
+                    Live scores
+                </div>
+                <div id="navbar2">
+                    News
+                </div>
+                <div id="navbar3">
+                    Schedule
+                    <ul id="ul_1">
+                        <li> Aus v Ind </li>
+                        <li>Ind v Pak</li>
+                        <li>Ban v Eng</li>
+                    </ul>
+                </div>
+                
+            </nav>
+            <img src="../source_images/cricbuzz-1.jpg" id="img" height="300px" width="1000px">
+        </div>
+        <marquee id="mq_live_msg"> 
+            <b> Catch all live action of 1st Test between India and Australia </b>
+        </marquee>
+        <hr />
+        <section>
+            2019 IPL Auction
+            <a class="ipl" href="dummy"> Live Tracker </a>
+            <a class="ipl" href="dummy"> Completed Auctions </a>
+            <a class="ipl" href="dummy"> Teams </a>
+            <a class="ipl" href="dummy"> Players </a>
+            <a class="ipl" href="dummy"> Analysis </a>
+            <a class="ipl" href="dummy"> Videos </a>
+        </section>
+        <br>
+        <section id="left_section">
+            Cricket updates!
+            <p id="news">
+            </p>
+        </section>
+        <section id="right_section">
+            Live scores
+            <p id="livescores">
+                
+            </p>
+        </section>
+        <footer id="page_footer">
+            &copy; 1996-2018, Cricbuzz.com, Inc. or its affiliates
+            <p id="date"></p>
+        </footer>
+    </body>
+</html>
